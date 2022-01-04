@@ -6,7 +6,7 @@ export default function LoginPage(props) {
     const [state, setState] = useState(initialState);
     const dispatch = useDispatch();
     const users = useSelector((state)=>Object.keys(state.users))
-    const logo = '../utils/logo192.jpg'
+    const logo = "../utils/logo192.jpg"
     const handleUserChange= (e)=>{
         e.preventDefault();
         console.log('Local state before user change',state)
@@ -21,10 +21,10 @@ export default function LoginPage(props) {
     
 
     return (
-        <div className="centered">
+        <div className={"container"}>
+            <img src={logo} alt='logo' className={'img-thumbnail'}/>
 
             <form>
-                <img src={logo} alt='logo'/>
                 <label form="users">Choose a user:</label>
                 <select name="users" id="users" defaultValue="nochoice" onChange={handleUserChange}>
                     <option value="nochoice" disabled>Select a User</option>

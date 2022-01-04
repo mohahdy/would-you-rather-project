@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
-import React,{ useEffect } from 'react';
+import React,{ useEffect,Fragment } from 'react';
 import handleGetUsers from '../actions/users'
 import handleGetQuestions from '../actions/questions';
 import setAuthedUser from '../actions/authedUser'
 import LoginPage from './LoginPage'
+import Nav from './Nav'
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 function App(props) {
   useEffect(() =>{
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -15,7 +17,9 @@ useEffect(() =>{
 props.dispatch(handleGetQuestions())},[])
 props.dispatch(setAuthedUser('sarahedo'))
   return (
-    <LoginPage/>
+    <Router>
+    <Nav/>
+    </Router>
     // <div >
     //   <header >
     //     Users List
