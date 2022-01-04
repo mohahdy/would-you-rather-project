@@ -1,10 +1,16 @@
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import React,{ useEffect } from 'react';
 import handleGetUsers from '../actions/users'
+import handleGetQuestions from '../actions/questions';
 function App(props) {
   useEffect(() =>{
       // eslint-disable-next-line react-hooks/exhaustive-deps
   props.dispatch(handleGetUsers())},[])
+  
+
+useEffect(() =>{
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+props.dispatch(handleGetQuestions())},[])
 
   return (
     <div >
@@ -18,10 +24,20 @@ function App(props) {
         </li>
       ))}
       </ul>
+      Questions list
+      <ul>
+      {props.questions.map((question)=>(
+        <li key={question}>
+          {question}
+        </li>
+      ))}
+      </ul>
     </div>
   );
 }
-function mapStateToProps({users}) {
-  return {users: Object.keys(users)}
+
+function mapStateToProps({users,questions}) {
+  return {users: Object.keys(users),
+  questions: Object.keys(questions)};
 }
 export default connect(mapStateToProps)(App);
