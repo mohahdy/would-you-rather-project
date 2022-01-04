@@ -2,6 +2,7 @@ import {connect, useSelector} from 'react-redux';
 import React,{ useEffect } from 'react';
 import handleGetUsers from '../actions/users'
 import handleGetQuestions from '../actions/questions';
+import setAuthedUser from '../actions/authedUser'
 function App(props) {
   useEffect(() =>{
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -11,7 +12,7 @@ function App(props) {
 useEffect(() =>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
 props.dispatch(handleGetQuestions())},[])
-
+props.dispatch(setAuthedUser('sarahedo'))
   return (
     <div >
       <header >
@@ -32,12 +33,15 @@ props.dispatch(handleGetQuestions())},[])
         </li>
       ))}
       </ul>
+      Authenticated User:
+      {props.authedUser}
     </div>
   );
 }
 
-function mapStateToProps({users,questions}) {
+function mapStateToProps({users,questions,authedUser}) {
   return {users: Object.keys(users),
-  questions: Object.keys(questions)};
+  questions: Object.keys(questions),
+authedUser};
 }
 export default connect(mapStateToProps)(App);
