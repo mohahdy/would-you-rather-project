@@ -1,10 +1,15 @@
 import React,{useEffect} from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import setAuthedUser from '../actions/authedUser'
 export default function Navig(props) {
 
+    const dispatch = useDispatch();
    console.log("NAVIG PROPS: ", props)
-
+    const handleLogout = (e)=>{
+        e.preventDefault();
+        dispatch(setAuthedUser(null))
+    }
     
     return <div >
             <ul className="nav">
@@ -19,9 +24,7 @@ export default function Navig(props) {
                 </li>
                 
                 <li className='authedUsernav' >Hello <strong>{props.username}</strong></li>
-
-            </ul>
-            <ul className='authedUsernav'> 
+                <li ><button onClick={handleLogout}>Logout</button></li>
             </ul>
         </div>
     
