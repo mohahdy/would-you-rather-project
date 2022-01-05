@@ -12,7 +12,7 @@ import QuestionCard from './QuestionCard'
       console.log(`${authedUser} unanswered questions`, unansweredQuestions)
 
 return <div className="home-container">
-    Unanswered Questions list
+    <h3>Unanswered Questions list</h3>
        <ul>
        {unansweredQuestions.map((question)=>(
          <li key={question}>
@@ -21,7 +21,7 @@ return <div className="home-container">
        ))}
        </ul>
        <hr/>
-       answered Questions list
+       <h3>Answered Questions list</h3>
        <ul>
        {answeredQuestions.map((question)=>(
          <li key={question}>
