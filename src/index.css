@@ -11,6 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+textarea {
+width: 300px;
+justify-content: space-around;
+flex-direction: column;
+}
+.center{
+  
+    text-align: center;
+  
+}
 .nav ul{
   display: flex;
   flex-direction: row;
@@ -49,4 +59,10 @@ code {
   flex-direction: row;
   justify-content: flex-end;
   text-align:right;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin: 10px;
 }

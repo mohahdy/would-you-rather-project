@@ -7,6 +7,7 @@ import LoginPage from './LoginPage'
 import Navig from './Nav'
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Home from './Home'
+import NewQuestion from './NewQuestion';
 export default function App(props) {
   const users = useSelector(({users})=>users)
   const questions = useSelector(({questions})=>Object.keys(questions))
@@ -32,7 +33,8 @@ console.log("props inside App: ", props)
   return (
     <Router>
     {authedUser?<Navig username ={authedUserName} />:<h1>Would You Rather...? APP</h1>}
-    <Home/>
+    {/* <Home/> */}
+    <NewQuestion className="center"/>
     </Router>
     // <div >
     //   <header >
