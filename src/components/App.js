@@ -4,6 +4,7 @@ import handleGetUsers from '../actions/users'
 import handleGetQuestions from '../actions/questions';
 import setAuthedUser from '../actions/authedUser'
 import LoginPage from './LoginPage'
+import QuestionDetails from './QuestionDetails'
 import Navig from './Nav'
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Home from './Home'
@@ -34,7 +35,9 @@ console.log("props inside App: ", props)
     <Router>
     {authedUser?<Navig username ={authedUserName} />:<h1>Would You Rather...? APP</h1>}
     {/* <Home/> */}
-    <NewQuestion className="center"/>
+    {/* <NewQuestion className="center"/>  */}
+    {/* vthrdm985a262al8qx3do 8xf0y6ziyjabvozdd253nd */}
+    <QuestionDetails id={"vthrdm985a262al8qx3do"}/>
     </Router>
     // <div >
     //   <header >

@@ -53,7 +53,13 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
 }
-
+.question-container{
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
 .authedusernav{
   display: flex;
   flex-direction: row;
