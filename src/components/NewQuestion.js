@@ -7,8 +7,6 @@ export default function NewQuestion(){
     const dispatch = useDispatch()
     const {optionOneText, optionTwoText} =state
 
-    console.log("NewQuestion internal state: ",state)
-    console.log("disabling logic: ",(optionOneText===''||optionOneText===undefined)||(optionTwoText===''||optionTwoText===undefined))
     const handleOpt1= (e)=>{
         const text = e.target.value
         

@@ -5,7 +5,6 @@ import setAuthedUser from '../actions/authedUser'
 export default function Navig(props) {
 
     const dispatch = useDispatch();
-   console.log("NAVIG PROPS: ", props)
     const handleLogout = (e)=>{
         e.preventDefault();
         dispatch(setAuthedUser(null))

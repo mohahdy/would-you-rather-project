@@ -17,7 +17,6 @@ export default function users (state={},action){
                 }
             }
         case ADD_ANSWER:
-            console.log("action in users ADD_ANSWER ::: ", action)
 
         return {...state,
             [action.integratedAnswer.authedUser]:{

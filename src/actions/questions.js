@@ -25,14 +25,12 @@ export default function handleGetQuestions (){
 
 export function handleAddQuestion(question) {
     return(dispatch)=>{
-        console.log("handleAddQuestion question : ",question)
         _saveQuestion(question).then((question)=>dispatch(addQuestion(question)))
     }
 }
 
 export function handleAddAnswer(integratedAnswer){
     return(dispatch)=>{
-        console.log("IntegratedAnswer",integratedAnswer)
         _saveQuestionAnswer(integratedAnswer).then(()=>dispatch(addAnswer(integratedAnswer)))
     }
 }

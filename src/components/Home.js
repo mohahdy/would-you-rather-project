@@ -5,11 +5,9 @@ import QuestionCard from './QuestionCard'
     const authedUser = useSelector(({authedUser}) => authedUser)
     const users = useSelector(({users})=> users)
     const questions = useSelector(({questions})=>Object.keys(questions))
-    console.log("questions in Home Component",questions)
     const answeredQuestions = users[authedUser]?Object.keys(users[authedUser].answers):[]
     const unansweredQuestions = questions.filter(item => !answeredQuestions.includes(item));
-      console.log(`${authedUser} answered questions`, answeredQuestions)
-      console.log(`${authedUser} unanswered questions`, unansweredQuestions)
+
 
 return <div className="home-container">
     <h3>Unanswered Questions list</h3>

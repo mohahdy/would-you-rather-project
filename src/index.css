@@ -72,3 +72,9 @@ flex-direction: column;
   border-radius: 25px;
   margin: 10px;
 }
+.logo {
+  height: 175px;
+  width: 175px;
+  border-radius: 25px;
+  margin: 60px;
+}

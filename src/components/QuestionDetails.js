@@ -1,34 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { handleAddAnswer } from '../actions/questions'
 
 export default function QuestionDetails(props) {
-    console.log('Question Details props: ', props)
-
+    let {question_id} = useParams();
     const [state, setState] = useState({ isAnswered: false, btnDisabled: true, answer: null, opt1Percentage: 0, opt2Percentage: 0,opt1Votes:0,opt2Votes:0 })
     const dispatch = useDispatch()
     const questions = useSelector((state) => state.questions)
     const users = useSelector((state) => state.users)
     const authedUser = useSelector(({ authedUser }) => authedUser)
-    const { id } = props
-    const authorID = (questions[id] !== undefined) && questions[id].author
-    console.log("Question Details : questions[id] : ", questions[id])
-    const questionOptionOne = (questions[id] !== undefined) && questions[id].optionOne.text
-    const questionOptionTwo = (questions[id] !== undefined) && questions[id].optionTwo.text
+    const authorID = (questions[question_id] !== undefined) && questions[question_id].author
+    const questionOptionOne = (questions[question_id] !== undefined) && questions[question_id].optionOne.text
+    const questionOptionTwo = (questions[question_id] !== undefined) && questions[question_id].optionTwo.text
     const authorName = useSelector(({ users }) => (users[authorID] !== undefined) ? users[authorID].name : null)
-            const opt1Votes = (questions[id]!==undefined)?questions[id].optionOne.votes.length:0
-        const opt2Votes = (questions[id]!==undefined)?questions[id].optionTwo.votes.length:0
-        const totalVotes = (questions[id]!==undefined)?opt1Votes+opt2Votes:0
-        const opt1Percentage = (questions[id]!==undefined)?(opt1Votes/totalVotes)*100:0
-        const opt2Percentage = (questions[id]!==undefined)?(opt2Votes/totalVotes)*100:0
+            const opt1Votes = (questions[question_id]!==undefined)?questions[question_id].optionOne.votes.length:0
+        const opt2Votes = (questions[question_id]!==undefined)?questions[question_id].optionTwo.votes.length:0
+        const totalVotes = (questions[question_id]!==undefined)?opt1Votes+opt2Votes:0
+        const opt1Percentage = (questions[question_id]!==undefined)?(opt1Votes/totalVotes)*100:0
+        const opt2Percentage = (questions[question_id]!==undefined)?(opt2Votes/totalVotes)*100:0
     useEffect(() => {
-        // console.log("(questions[id]!==undefined)?questions[id].optionOne.votes.length:0) ===>", (questions[id]!==undefined)?questions[id].optionOne.votes.length:0)
-
 
         (users[authedUser] !== undefined) && setState((prevState) => ({
             ...prevState,
-            isAnswered: Object.keys(users[authedUser].answers).find(answer => answer === id),
+            isAnswered: Object.keys(users[authedUser].answers).find(answer => answer === question_id),
             opt1Percentage,
             opt2Percentage,
             opt1Votes,
@@ -36,7 +31,7 @@ export default function QuestionDetails(props) {
         })
         )
     }
-        , [users, authedUser, id,opt1Percentage,opt2Percentage,opt1Votes,opt2Votes])
+        , [users, authedUser, question_id,opt1Percentage,opt2Percentage,opt1Votes,opt2Votes])
     // const isAnswered = (users[authedUser]!==undefined)?Object.keys(users[authedUser].answers).find(answer => answer === id):null
     const handleOptionChange = (e) => {
         setState((prevState) => ({
@@ -49,7 +44,7 @@ export default function QuestionDetails(props) {
     const handleSubmitAnswer = (e) => {
         e.preventDefault();
 
-        dispatch(handleAddAnswer({ answer: state.answer, qid: id, authedUser }))
+        dispatch(handleAddAnswer({ answer: state.answer, qid: question_id, authedUser }))
     }
     const unansweredQuestion = <div className="question-container">
         <img className="avatar" src={users[authorID] ? users[authorID].avatarURL : null} alt={authorName} />
