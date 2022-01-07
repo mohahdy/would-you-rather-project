@@ -78,3 +78,19 @@ flex-direction: column;
   border-radius: 25px;
   margin: 60px;
 }
+.usercard{
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 1px solid #ebc6eb;
+  border-radius: 3px;
+}
+
+.selected-answer{
+  background-color: #ccf0c3;
+  border: 1px solid #01110e;
+
+}

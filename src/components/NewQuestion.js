@@ -1,11 +1,13 @@
-import React,{setState,useState} from 'react'
+import React,{setState,useState, Fragment} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {handleAddQuestion} from '../actions/questions'
+import {Navigate} from 'react-router-dom'
+
 export default function NewQuestion(){
-    const [state,setState] = useState({optionOneText:'',optionTwoText:''})
+    const [state,setState] = useState({optionOneText:'',optionTwoText:'', isSubmitted:false})
     const author = useSelector((state)=>state.authedUser)
     const dispatch = useDispatch()
-    const {optionOneText, optionTwoText} =state
+    const {optionOneText, optionTwoText, isSubmitted} =state
 
     const handleOpt1= (e)=>{
         const text = e.target.value
@@ -24,8 +26,13 @@ export default function NewQuestion(){
         e.preventDefault();
         const question = {optionOneText, optionTwoText,author}
         dispatch(handleAddQuestion(question))
+        setState(prevState=>({
+            ...prevState, isSubmitted:true
+        }))
     }
 return <div className="center">
+    {isSubmitted ?<Navigate to={"/"}/>:
+    <Fragment>
     <h3> Create a new question</h3>
     <form>
         <div> Would You Rather ... ?</div>
@@ -38,5 +45,7 @@ return <div className="center">
     <button disabled={(optionOneText==='')||(optionTwoText==='')} onClick={handleSubmit}>Submit</button>
     </div>
     </form>
+    </Fragment>
+}
 </div>
 }
