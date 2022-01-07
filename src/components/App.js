@@ -1,8 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux';
-import React,{ useEffect,Fragment,useLayoutEffect } from 'react';
+import React,{ useEffect } from 'react';
 import handleGetUsers from '../actions/users'
 import handleGetQuestions from '../actions/questions';
-import setAuthedUser from '../actions/authedUser'
 import LoginPage from './LoginPage'
 import QuestionDetails from './QuestionDetails'
 import Navig from './Nav'

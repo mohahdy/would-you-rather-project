@@ -1,4 +1,4 @@
-import React,{setState,useState, Fragment} from 'react'
+import React,{useState, Fragment} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {handleAddQuestion} from '../actions/questions'
 import {Navigate} from 'react-router-dom'

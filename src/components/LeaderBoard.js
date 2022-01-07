@@ -1,8 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux'
 import UserCard from './UserCard'
 export default function LeaderBoard(){
-    const authedUser = useSelector(({authedUser}) => authedUser)
     const usersIds = useSelector(({users})=>Object.keys(users))
     const users = useSelector(({users})=>users)
     return <div className="home-container">
